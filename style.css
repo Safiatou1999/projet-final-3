@@ -1,162 +1,107 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
+*{
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
-
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #007BFF;
-    padding: 15px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo img {
-    width: 50px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    padding: 0;
-}
-
-.nav-links li {
-    margin: 0 15px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-links a:hover {
-    color: #FFD700;
-}
-
-/* Sections */
-section {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-/* Page d'accueil */
-.accueil {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: blue;
-    text-align: center;
-}
-.btn{
-        background-color: #5cb85c;
-        color: white;
-        padding: 15px 25px;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 1rem;
-     transition: background-color 0.3s, transform 0.3s;
-}
-/* Page avantages */
-.avantages-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.avantage-item {
-    width: 30%;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.avantage-item:hover {
-    transform: scale(1.05);
-}
-
-.avantage-item img {
-    width: 50%;
-    border-radius: 10px;
-}
-
-/* Formulaire */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.contact-form label {
-    font-weight: bold;
-    margin-top: 10px;
-    
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.contact-form button {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
-.contact button {
-    background-color: #5cb85c;
-    color: white;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-
-.contact-form button:hover {
-    background-color: #0056b3;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 50px;
-    border-radius: 50px 50px 0 0;
-}
+/* style.css */
+:root {
+    --primary-blue: #2dce89;
+    --water-gradient: linear-gradient(45deg, #4e73df, #2dce89, #00f2fe);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Base */
+  .gradient-bg {
+    background: var(--water-gradient);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+  }
+  
+  /* Animations clés */
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes waterWave {
+    to { transform: scale(4); opacity: 0; }
+  }
+  
+  /* Glassmorphism */
+  .glassmorphism-nav {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  
+  /* Effet "eau" sur les boutons */
+  .btn-water {
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+  }
+  
+  .btn-water:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(46, 229, 157, 0.4);
+  }
+  
+  .water-effect::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    animation: waterWave 0.6s ease;
+  }
+  
+  /* Animations de scroll */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s ease;
+  }
+  
+  .scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Typing Animation */
+  .typing-animation {
+    width: fit-content;
+    border-right: 3px solid;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(30), blink-caret 0.75s step-end infinite;
+  }
+  
+  /* Effet 3D */
+  .hover-3d {
+    transition: transform 0.4s;
+  }
+  
+  .hover-3d:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+    }
+  
+    .hero-section .row {
+      flex-direction: column-reverse;
+  }
+  }
+  

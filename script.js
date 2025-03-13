@@ -1,37 +1,40 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Effet sur le formulaire
-    const inputs = document.querySelectorAll("input, textarea");
-
-    inputs.forEach(input => {
-        input.addEventListener("focus", function () {
-            this.style.borderColor = "#007BFF";
-        });
-
-        input.addEventListener("blur", function () {
-            this.style.borderColor = "#ccc";
-        });
+// Scroll Reveal
+const scrollReveal = () => {
+    const elements = document.querySelectorAll('.scroll-reveal');
+    elements.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight * 0.8;
+      if(elementTop < windowHeight) {
+        el.classList.add('active');
+      }
     });
-
-    // Effet zoom sur les images
-    const images = document.querySelectorAll(".zoom-effect");
-
-    images.forEach(image => {
-        image.addEventListener("mouseover", function () {
-            this.style.transform = "scale(1.1)";
-            this.style.transition = "transform 0.3s ease-in-out";
-        });
-
-        image.addEventListener("mouseout", function () {
-            this.style.transform = "scale(1)";
-        });
-    });
-
-    // Message de confirmation après l'envoi du formulaire
-    const form = document.querySelector(".contact-form");
-    if (form) {
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert("Merci ! Votre message a été envoyé.");
-     });
   }
+  
+  // Effet "eau" sur clic
+  const createWaterEffect = (e) => {
+    const btn = e.currentTarget;
+    const effect = document.createElement('div');
+    effect.className = 'water-effect';
+    const rect = btn.getBoundingClientRect();
+    effect.style.left = $`{e.clientX - rect.left - 10}px`;
+    effect.style.top = $`{e.clientY - rect.top - 10}px`;
+    btn.appendChild(effect);
+    setTimeout(() => effect.remove(), 600);
+  }
+  
+  // Initialisation
+  document.addEventListener('DOMContentLoaded', () => {
+    // Boutons avec effet eau
+    document.querySelectorAll('.btn-water').forEach(btn => {
+      btn.addEventListener('click', createWaterEffect);
+    });
+  
+    // Scroll Reveal
+    window.addEventListener('scroll', scrollReveal);
+    scrollReveal(); // Initial check
+  
+    // Retour en haut
+    document.querySelector('.scroll-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth'});
 });
+  });  
